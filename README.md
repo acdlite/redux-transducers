@@ -17,7 +17,7 @@ npm install --save redux-transduce
 
 ## Caveat: not all transducers are supported
 
-Transducers typically operate on collections. It's possible to use transducers to transform asynchronous streams, but it requires the use of local state that persists over time. We can't do this, because Redux makes a hard assumption that the reducer is a pure function -- it must return the same result for a given state and action, every time.
+Transducers typically operate on collections. It's possible to use transducers to transform asynchronous streams, but it requires the use of local state that persists over time. We can't do this, because Redux makes a hard assumption that the reducer is a pure function — it must return the same result for a given state and action, every time.
 
 For this reason, `transduce()` transforms actions one at a time. That means transducers like `filter()` and `map()` work fine, but `take()` and `dedupe()` do not.
 
@@ -35,7 +35,7 @@ const addTodoReducer = transduce(
 
 const removeTodoReducer = transduce(
   filter(action => action.type === 'ADD_TODO'),
-  (state, action) => ({ ...state, todos: todos.filter(t => t.id !== action.payload.id) })
+  (state, action) => ({ ...state, todos: state.todos.filter(t => t.id !== action.payload.id) })
 );
 
 // Combine into a single reducer with reduce-reducers
