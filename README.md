@@ -69,7 +69,7 @@ into(store, compose(
 ), actions);
 ```
 
-This example uses the `into(to, xform, from)` function of transducers.js. It applies a transformation to each action in a collection — in this case an array, but could be any iterable data structure — and "pours" it into the target collection — in this case, a store — by performing a dispatch. The call to `store.dispatch()` is analogous to a call to `array.push()`.
+This example uses the [`into(to, xform, from)`](https://github.com/jlongster/transducers.js#applying-transformations) function of transducers.js. It applies a transformation to each action in a collection — in this case an array, but could be any iterable data structure — and "pours" it into the target collection — in this case, a store — by performing a dispatch. The call to `store.dispatch()` is analogous to a call to `array.push()`.
 
 ## Using transducers to create reducers
 
