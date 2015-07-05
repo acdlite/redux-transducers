@@ -1,6 +1,6 @@
 {
   "name": "redux-transducers",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Transducer utilities for Redux.",
   "main": "lib/index.js",
   "scripts": {
