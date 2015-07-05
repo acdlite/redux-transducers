@@ -6,7 +6,7 @@ redux-transducers
 
 Transducer utilities for Redux.
 
-- `addTransducerProtocol` lets you dispatch using transducers.
+- `transducerProtocol` lets you dispatch using transducers.
 - `transduce()` lets you create reducers from transducers.
 
 Conforms to the [transducer protocol](https://github.com/cognitect-labs/transducers-js#the-transducer-protocol) used by [transducers.js](https://github.com/jlongster/transducers.js) and [transducers-js](https://github.com/cognitect-labs/transducers-js), and is tested against those libraries.
@@ -16,24 +16,24 @@ npm install --save redux-transducers
 ```
 ## Using transducers to dispatch actions
 
-### `addTransducerProtocol(createStore)`
+### `transducerProtocol(createStore)`
 
 This is a *higher-order store* that enables a Redux store to be dispatched via a transducer. Higher-order stores aren't currently documented ([it's coming](https://github.com/gaearon/redux/pull/140)) but they're simple to use:
 
 ```js
-const newCreateStore = addTransducerProtocol(createStore);
+const newCreateStore = transducerProtocol(createStore);
 const store = newCreateStore(reducer, initialState);
 ```
 
 That's it! Now you can dispatch actions to you stores using transducers.
 
-**NOTE**: If you're using other higher-order stores, like the forthcoming [`applyMiddleware()`](https://github.com/gaearon/redux/pull/213), `addTransducerProtocol` *must* come first in the chain. This is because, in order to conform to the transducer protocol, and for compatibility with popular transducer libraries, the store returned by `addTransducerProtocol()` is not a plain object. This shouldn't be a problem. Just remember to always put first.
+**NOTE**: If you're using other higher-order stores, like the forthcoming [`applyMiddleware()`](https://github.com/gaearon/redux/pull/213), `transducerProtocol` *must* come first in the chain. This is because, in order to conform to the transducer protocol, and for compatibility with popular transducer libraries, the store returned by `transducerProtocol()` is not a plain object. This shouldn't be a problem. Just remember to always put first.
 
 ```js
 // This won't work
-const newCreateStore = compose(applyMiddleware(m1, m2, m3), addTransducerProtocol, createStore);
+const newCreateStore = compose(applyMiddleware(m1, m2, m3), transducerProtocol, createStore);
 // Do this instead
-const newCreateStore = compose(addTransducerProtocol, applyMiddleware(m1, m2, m3), createStore);
+const newCreateStore = compose(transducerProtocol, applyMiddleware(m1, m2, m3), createStore);
 ```
 
 ### How it works
@@ -83,7 +83,7 @@ Transducers typically operate on collections. It's possible to use transducers t
 
 For this reason, `transduce()` transforms actions one at a time. That means transducers like `filter()` and `map()` work fine, but `take()` and `dedupe()` do not.
 
-This caveat **does not apply to `addTransducerProtocol()`**, which works with all transducers, stateful or otherwise, because it does its transforms *before* they reach the reducer.
+This caveat **does not apply to `transducerProtocol()`**, which works with all transducers, stateful or otherwise, because it does its transforms *before* they reach the reducer.
 
 ### Example: filtering action types
 
