@@ -1,15 +1,8 @@
-import transduce from '../';
+import { transduce } from '../';
 import transducers1 from 'transducers.js';
 import transducers2 from 'transducers-js';
 
-// Mock createStore
-function createStore(reducer, initialState) {
-  let state = initialState;
-  return {
-    getState: () => state,
-    dispatch: action => state = reducer(state, action)
-  };
-}
+import createStore from './createStore';
 
 // Test with both transducers-js and transducers.js libraries
 function testTransduce(compose, remove, filter, map) {

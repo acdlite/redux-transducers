@@ -1,17 +1,7 @@
-const STEP = '@@transducer/step';
-const RESULT = '@@transducer/result';
+import transduce from './transduce';
+import transducerProtocol from './transducerProtocol';
 
-function identity(t) {
-  return t;
-}
-
-export default function transduce(xform, reducer = identity) {
-  return (state, action) => {
-    const transducer = xform({
-      [STEP]: reducer,
-      [RESULT]: identity
-    });
-    const result = transducer[STEP](state, action);
-    return transducer[RESULT](result);
-  };
-}
+export {
+  transduce,
+  transducerProtocol
+};
