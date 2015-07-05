@@ -7,7 +7,7 @@ class Store {
   }
 
   [INIT]() {
-    return this.store;
+    return this;
   }
 
   [STEP](store, action) {
