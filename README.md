@@ -97,7 +97,7 @@ const addTodoReducer = transduce(
 );
 
 const removeTodoReducer = transduce(
-  filter(action => action.type === 'ADD_TODO'),
+  filter(action => action.type === 'REMOVE_TODO'),
   (state, action) => ({ ...state, todos: state.todos.filter(t => t.id !== action.payload.id) })
 );
 
