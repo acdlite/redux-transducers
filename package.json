@@ -1,5 +1,5 @@
 {
-  "name": "redux-transduce",
+  "name": "redux-transducers",
   "version": "0.1.0",
   "description": "Use transducers to create Redux reducers",
   "main": "lib/index.js",
@@ -15,12 +15,12 @@
   ],
   "author": "Andrew Clark <acdlite@me.com>",
   "bugs": {
-    "url": "https://github.com/acdlite/redux-transduce/issues"
+    "url": "https://github.com/acdlite/redux-transducers/issues"
   },
-  "homepage": "https://github.com/acdlite/redux-transduce",
+  "homepage": "https://github.com/acdlite/redux-transducers",
   "repository": {
     "type": "git",
-    "url": "https://github.com/acdlite/redux-transduce.git"
+    "url": "https://github.com/acdlite/redux-transducers.git"
   },
   "license": "MIT",
   "devDependencies": {
