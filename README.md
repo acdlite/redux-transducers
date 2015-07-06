@@ -60,12 +60,10 @@ into(store, compose(
     ? { type: 'ADD_TODO', payload: { text: a } }
     : a
   ),
-  filter(a => {
-    return !(
-      a.type === 'ADD_TODO' &&
-      /(M|m)utat(e|ion)/g.test(a.payload.text)
-    );
-  })
+  filter(a => !(
+    a.type === 'ADD_TODO' &&
+    /(M|m)utat(e|ion)/g.test(a.payload.text)
+  ))
 ), actions);
 ```
 
