@@ -25,7 +25,7 @@ const newCreateStore = transducerProtocol(createStore);
 const store = newCreateStore(reducer, initialState);
 ```
 
-That's it! Now you can dispatch actions to you stores using transducers.
+That's it! Now you can dispatch actions to your stores using transducers.
 
 **NOTE**: If you're using other higher-order stores, like the forthcoming [`applyMiddleware()`](https://github.com/gaearon/redux/pull/213), `transducerProtocol` *must* come first in the chain. This is because, in order to conform to the transducer protocol, and for compatibility with popular transducer libraries, the store returned by `transducerProtocol()` is not a plain object. This shouldn't be a problem. Just remember to always put first.
 
